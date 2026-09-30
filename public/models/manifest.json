@@ -1,0 +1,98 @@
+{
+  "coordinateSystem": "glTF: Y up, +Z forward; metres",
+  "assets": {
+    "resident": {
+      "file": "resident.glb",
+      "bytes": 470236,
+      "meshes": 20,
+      "triangles": 16576,
+      "materials": 10,
+      "animationClips": [
+        "Idle",
+        "Walk"
+      ],
+      "dimensionsMeters": [
+        0.89,
+        2.052,
+        0.552
+      ],
+      "groundMinMeters": 0.018,
+      "reimport": "PASS"
+    },
+    "ai_helper": {
+      "file": "ai_helper.glb",
+      "bytes": 272648,
+      "meshes": 8,
+      "triangles": 9692,
+      "materials": 8,
+      "animationClips": [],
+      "dimensionsMeters": [
+        0.714,
+        1.2659,
+        0.4689
+      ],
+      "groundMinMeters": 0.002,
+      "reimport": "PASS"
+    },
+    "little_house": {
+      "file": "little_house.glb",
+      "bytes": 964816,
+      "meshes": 12,
+      "triangles": 21716,
+      "materials": 12,
+      "animationClips": [],
+      "dimensionsMeters": [
+        2.7512,
+        3.1,
+        2.65
+      ],
+      "groundMinMeters": 0.0,
+      "reimport": "PASS"
+    },
+    "street_tile_3m": {
+      "file": "street_tile_3m.glb",
+      "bytes": 637340,
+      "meshes": 3,
+      "triangles": 12220,
+      "materials": 3,
+      "animationClips": [],
+      "dimensionsMeters": [
+        3.0,
+        0.2855,
+        3.0
+      ],
+      "groundMinMeters": -0.24,
+      "reimport": "PASS"
+    },
+    "planter": {
+      "file": "planter.glb",
+      "bytes": 236716,
+      "meshes": 4,
+      "triangles": 8484,
+      "materials": 4,
+      "animationClips": [],
+      "dimensionsMeters": [
+        0.6789,
+        0.7368,
+        0.6397
+      ],
+      "groundMinMeters": 0.0,
+      "reimport": "PASS"
+    },
+    "market_stall": {
+      "file": "market_stall.glb",
+      "bytes": 570428,
+      "meshes": 6,
+      "triangles": 16580,
+      "materials": 6,
+      "animationClips": [],
+      "dimensionsMeters": [
+        1.85,
+        1.9349,
+        1.2331
+      ],
+      "groundMinMeters": 0.0,
+      "reimport": "PASS"
+    }
+  }
+}
