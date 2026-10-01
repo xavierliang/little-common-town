@@ -4,6 +4,8 @@ import { Html, useAnimations, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import { anchors, bakeryRoute, type BakeryPlace } from "./bakery-scene-routes";
+import { actorFacing, cameraFrame } from "./bakery-presentation";
+import { bakeryAssets } from "./bakery-assets";
 export type { BakeryPlace } from "./bakery-scene-routes";
 
 export type BakeryPerson = "ahe" | "xiaoman";
@@ -18,21 +20,15 @@ function Camera({
   focus,
   beat,
 }: {
-  focus: BakeryPerson | "wide";
+  focus: BakeryPerson | "wide" | "auto";
   beat: SceneBeat;
 }) {
   const { camera, size } = useThree();
   const target = useRef(new THREE.Vector3(0, 0.65, 0.1));
+  const framing = useMemo(() => cameraFrame(focus, beat), [focus, beat]);
   const destination = useMemo(
-    () =>
-      focus === "wide"
-        ? new THREE.Vector3(0, 0.65, 0.1)
-        : new THREE.Vector3(
-            anchors[beat[focus]][0],
-            0.9,
-            anchors[beat[focus]][2],
-          ),
-    [focus, beat],
+    () => new THREE.Vector3(...framing.target),
+    [framing],
   );
   useFrame((_, dt) => {
     target.current.lerp(destination, 1 - Math.exp(-dt * 2.6));
@@ -40,8 +36,8 @@ function Camera({
     camera.lookAt(target.current);
     const c = camera as THREE.OrthographicCamera;
     const desired = Math.min(
-      size.width / (focus === "wide" ? 12.5 : 8.5),
-      size.height / 10.4,
+      size.width / framing.horizontalSpan,
+      size.height / framing.verticalSpan,
     );
     c.zoom = THREE.MathUtils.damp(c.zoom, desired, 3, dt);
     c.updateProjectionMatrix();
@@ -57,7 +53,7 @@ function Environment({
   active: boolean;
   paused: boolean;
 }) {
-  const gltf = useGLTF("/models/bakery/environment.glb");
+  const gltf = useGLTF(bakeryAssets.environment);
   const scene = useMemo(() => {
     const s = gltf.scene.clone(true);
     s.traverse((o) => {
@@ -118,7 +114,7 @@ function Person({
   beatKey: string;
   onSelect: () => void;
 }) {
-  const gltf = useGLTF(`/models/bakery/${id}.glb`);
+  const gltf = useGLTF(bakeryAssets[id]);
   const scene = useMemo(() => {
     const s = clone(gltf.scene);
     s.traverse((o) => {
@@ -195,8 +191,13 @@ function Person({
       (actions[name] ?? actions.Idle)?.reset().fadeIn(0.18).play();
       phase.current = name;
     }
+    if (actions.Carry) {
+      const holding = place === "delivery" && !walking;
+      if (holding && !actions.Carry.paused) actions.Carry.time = 0;
+      actions.Carry.paused = holding;
+    }
     if (!walking) {
-      const facing = place === "delivery" ? 0 : Math.PI;
+      const facing = actorFacing(place, active);
       g.rotation.y +=
         Math.atan2(
           Math.sin(facing - g.rotation.y),
@@ -232,7 +233,7 @@ function Person({
   );
 }
 function CarryBasket() {
-  const g = useGLTF("/models/bakery/carry.glb");
+  const g = useGLTF(bakeryAssets.carry);
   const s = useMemo(() => g.scene.clone(true), [g.scene]);
   return <primitive object={s} position={[0, 0.85, 0.42]} />;
 }
@@ -247,7 +248,7 @@ export default function BakeryScene({
   onReady,
 }: {
   beat: SceneBeat;
-  selected: BakeryPerson | "wide";
+  selected: BakeryPerson | "wide" | "auto";
   onSelect: (id: BakeryPerson) => void;
   onPlace: (place: BakeryPlace) => void;
   evening?: boolean;

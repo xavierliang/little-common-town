@@ -1,0 +1,35 @@
+{
+  "revision": "refined-bakery-2026-10-01",
+  "assets": {
+    "ahe": {
+      "url": "/models/bakery/ahe-946c64a3e822.glb",
+      "sha256": "946c64a3e82233a994558ecd10b57d997c81c42f1e3cb58450b348cd6c5d7118",
+      "bytes": 1176344
+    },
+    "xiaoman": {
+      "url": "/models/bakery/xiaoman-1383caf22dba.glb",
+      "sha256": "1383caf22dba15f3f8e245d18f43394e42028c082e1b0080f14ecd512c1eddac",
+      "bytes": 1487412
+    },
+    "ahePortrait": {
+      "url": "/models/bakery/ahePortrait-cb805584f0a8.png",
+      "sha256": "cb805584f0a8474bab908ec71f27673e5ab558c2cecd4cb034a83bc8151f4b78",
+      "bytes": 309229
+    },
+    "xiaomanPortrait": {
+      "url": "/models/bakery/xiaomanPortrait-1ed98ba9ae94.png",
+      "sha256": "1ed98ba9ae94f0746e83a60ccd7ce28b4deee5290504c1da35ce1ae3f5a37023",
+      "bytes": 338010
+    },
+    "environment": {
+      "url": "/models/bakery/environment-fc2fcf37486b.glb",
+      "sha256": "fc2fcf37486b163820e8cf2bccb46d1ca6333e2c15cf7812a9c08741470d2305",
+      "bytes": 5242692
+    },
+    "carry": {
+      "url": "/models/bakery/carry-cd06a1982b2d.glb",
+      "sha256": "cd06a1982b2dc96eea6ba894ddcea29aa64a40465c757785b02614111106f4c7",
+      "bytes": 138000
+    }
+  }
+}

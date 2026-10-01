@@ -38,6 +38,11 @@
       0.5,
       0,
       3.3
+    ],
+    "portrait": [
+      -0.8,
+      0,
+      2.3
     ]
   },
   "bounds": {
@@ -63,17 +68,21 @@
   "actions": [
     "Machine_Mix"
   ],
-  "editableSource": "bakery-editable.blend",
-  "generator": "build_bakery.py",
-  "runtime": "bakery-environment.glb",
+  "editableSource": "bakery.blend",
+  "generator": "refine_bakery.py",
+  "runtime": "bakery.glb",
   "textures": "None. Original clay PBR materials, no external textures.",
   "sourceLicense": "Original generated asset; no third-party assets.",
-  "polygonCountBeforeTriangulation": 86408,
   "runtimeStats": {
-    "bytes": 6551652,
-    "triangles": 160616,
-    "meshPrimitives": 28,
-    "materials": 27
+    "bytes": 5242692,
+    "triangles": 169475,
+    "meshes": 32,
+    "primitives": 32,
+    "materials": 31,
+    "animations": [
+      "Machine_Mix"
+    ],
+    "meshPrimitives": 32
   },
   "navigation": {
     "frontCorridorZ": 0.35,
@@ -86,5 +95,19 @@
       "minZ": -1.03,
       "maxZ": -0.08
     }
+  },
+  "refinement": "Preserved latest scene layout and interactions; refined roof, real oven opening, scored bread/croissants, mixer and selective garden joinery",
+  "sha256": "fc2fcf37486b163820e8cf2bccb46d1ca6333e2c15cf7812a9c08741470d2305",
+  "worktableFit": {
+    "tabletopHeight": 0.83,
+    "doughCenterHeight": 0.9,
+    "legBottomHeight": 0,
+    "heightDelta": -0.2,
+    "anchorsUnchanged": true
+  },
+  "carryProp": {
+    "file": "carry-bread-basket.glb",
+    "status": "Unchanged original; attachment transform preserved",
+    "sha256": "cd06a1982b2dc96eea6ba894ddcea29aa64a40465c757785b02614111106f4c7"
   }
 }

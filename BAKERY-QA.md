@@ -1,4 +1,6 @@
-# Bakery verification — 2026-10-01
+# Bakery verification — v5 story-flow record
+
+The v6 model/presentation refinement is documented in [BAKERY-REFINEMENT.md](BAKERY-REFINEMENT.md), with current Mac checks in [VERIFICATION.md](VERIFICATION.md). The following preserves the earlier story-flow evidence; actual WebGL acceptance remains separate.
 
 ## Passed
 

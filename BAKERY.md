@@ -13,7 +13,7 @@ The seven-day scenario assumes an already-borrowed machine reduces the worker-ho
 ## Technical verification
 
 - `npm ci` then `npm test` and `npm run build`
-- 39 tests, including exhaustive accounting/time/consent checks across all 2,592 legal complete story paths
+- 42 tests, including exhaustive accounting/time/consent checks across all 2,592 legal complete story paths
 - Save files contain only validated plan histories, not editable balances; loading replays the same deterministic settlements
 - Repeated confirmation is idempotent; a stale different plan is rejected
 - Scene route tests prevent crossing the kneading table

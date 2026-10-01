@@ -1,8 +1,9 @@
 # Browser playtest checklist
 
-## Bakery v5
+## Refined bakery v6
 
-- Inspect real WebGL environment, character proportions, focus, movement routes, shadows and loading.
+- Inspect real WebGL environment, character close-ups, focus, movement routes, shadows and loading.
+- Check both walking extremes for apron/leg penetration and Work poses for actual hand/worktop contact.
 - On mobile, verify safe-area controls, sticky actions, readable forecasts and character details.
 - Exercise the four two-person decisions through day seven, undo, consent limits and wage acknowledgment.
 - Check repeated confirmation, reload, export/import, checkpoint rewind and equal-horizon comparison.

@@ -32,6 +32,7 @@ import {
 } from "./bakery-engine";
 import type { BakeryPlace, SceneBeat } from "./BakeryScene";
 import "./bakery.css";
+import { bakeryAssets } from "./bakery-assets";
 const BakeryScene = lazy(() => import("./BakeryScene"));
 const GameApp = lazy(() => import("./GameApp"));
 const SAVE = "little-common-bakery-v1";
@@ -97,7 +98,7 @@ class SceneBoundary extends Component<
   }
 }
 function portrait(id: CharacterId) {
-  return `/models/bakery/${id}-portrait.png`;
+  return id === "ahe" ? bakeryAssets.ahePortrait : bakeryAssets.xiaomanPortrait;
 }
 function actionPlace(day: DaySettlement, id: CharacterId): BakeryPlace {
   const p = day.characters[id];
@@ -140,7 +141,9 @@ export default function BakeryApp() {
   const [draft, setDraft] = useState<Draft>({});
   const [undo, setUndo] = useState<Draft[]>([]);
   const [wage, setWage] = useState<WageMode>("protected");
-  const [selected, setSelected] = useState<CharacterId | "wide">("ahe");
+  const [selected, setSelected] = useState<CharacterId | "wide" | "auto">(
+    "ahe",
+  );
   const [modal, setModal] = useState<Modal>(null);
   const [toast, setToast] = useState("");
   const [error, setError] = useState("");
@@ -310,7 +313,7 @@ export default function BakeryApp() {
       current.current = next;
       setStory(next);
       setModal(null);
-      setSelected("wide");
+      setSelected("auto");
       setActorsReady(false);
       setReplayStep(0);
       setPaused(false);

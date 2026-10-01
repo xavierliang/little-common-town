@@ -17,3 +17,16 @@ test("bakery action routes reach all anchors without crossing kneading table", (
         }
     }
 });
+
+test("refined environment keeps every gameplay destination at its published anchor", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const manifest = JSON.parse(
+    await readFile(
+      new URL("../public/models/bakery/manifest.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  for (const [name, point] of Object.entries(anchors))
+    assert.deepEqual(manifest.anchors[name], point, name);
+  assert.equal(manifest.footplane, 0);
+});

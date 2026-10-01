@@ -1,6 +1,6 @@
 # Full-viewport town redesign (v3)
 
-Historical town presentation retained under the v5 bakery menu. See [BAKERY.md](BAKERY.md) for the current default entry.
+Historical town presentation retained under the v6 bakery menu. See [BAKERY.md](BAKERY.md) for the current default entry.
 
 This iteration preserves the seven-day economy and adds a game-first visual/interaction shell. The town occupies the viewport (100dvh), without forcing the browser Fullscreen API. A compact HUD holds day, meal/shift progress and public budget. Resident/building selection focuses the camera and opens relevant actions in a bottom context tray. The map stays visible; roster, goals, help and ledger use dismissible dialogs.
 
