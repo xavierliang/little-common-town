@@ -1,6 +1,8 @@
 # Browser playtest checklist
 
-## Refined bakery v6
+## Bakery v7 lower-face correction
+
+- Inspect both lower faces from the front, side and three-quarter views; check the smile, chin/neck junction and matching UI portraits.
 
 - Inspect real WebGL environment, character close-ups, focus, movement routes, shadows and loading.
 - Check both walking extremes for apron/leg penetration and Work poses for actual hand/worktop contact.

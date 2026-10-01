@@ -1,4 +1,6 @@
-# Refined bakery release
+# Refined bakery v6
+
+Historical measurements for v6. The subsequent v7 lower-face correction is documented in [BAKERY-CHIN-FIX.md](BAKERY-CHIN-FIX.md); current runtime hashes and sizes are in public/models/bakery/runtime-manifest.json.
 
 This release completes the asset refinement inside the playable bakery chapter. The seven-day decisions, cash/time ledger, consent rules, saves and original town sandbox are unchanged.
 

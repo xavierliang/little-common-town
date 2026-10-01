@@ -1,25 +1,25 @@
 {
-  "revision": "refined-bakery-2026-10-01",
+  "revision": "chin-contour-v3-2026-10-01",
   "assets": {
     "ahe": {
-      "url": "/models/bakery/ahe-946c64a3e822.glb",
-      "sha256": "946c64a3e82233a994558ecd10b57d997c81c42f1e3cb58450b348cd6c5d7118",
-      "bytes": 1176344
+      "url": "/models/bakery/ahe-aa001a86c0e0.glb",
+      "sha256": "aa001a86c0e020c3fbf1d48f03a22ef2b71900ae584884e70263684bab040a66",
+      "bytes": 1229996
     },
     "xiaoman": {
-      "url": "/models/bakery/xiaoman-1383caf22dba.glb",
-      "sha256": "1383caf22dba15f3f8e245d18f43394e42028c082e1b0080f14ecd512c1eddac",
-      "bytes": 1487412
+      "url": "/models/bakery/xiaoman-683d54a44c41.glb",
+      "sha256": "683d54a44c41e8d3114a30bdb54268bbceca55b1c60213a82c2bcbd68c953312",
+      "bytes": 1456772
     },
     "ahePortrait": {
-      "url": "/models/bakery/ahePortrait-cb805584f0a8.png",
-      "sha256": "cb805584f0a8474bab908ec71f27673e5ab558c2cecd4cb034a83bc8151f4b78",
-      "bytes": 309229
+      "url": "/models/bakery/ahePortrait-4d44b88a4369.png",
+      "sha256": "4d44b88a4369e29aa4e8e35ee03191d12d6cd0d3a93469239a5cf9e6adda6204",
+      "bytes": 317399
     },
     "xiaomanPortrait": {
-      "url": "/models/bakery/xiaomanPortrait-1ed98ba9ae94.png",
-      "sha256": "1ed98ba9ae94f0746e83a60ccd7ce28b4deee5290504c1da35ce1ae3f5a37023",
-      "bytes": 338010
+      "url": "/models/bakery/xiaomanPortrait-105381e09634.png",
+      "sha256": "105381e096345e0c7dd3567bbd981797b0fd1d8caf2e310f9cbf967fd12447fd",
+      "bytes": 325941
     },
     "environment": {
       "url": "/models/bakery/environment-fc2fcf37486b.glb",
