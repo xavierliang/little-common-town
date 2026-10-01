@@ -1,0 +1,90 @@
+{
+  "units": "metres",
+  "coordinateSystem": "glTF Y-up, camera on +X +Z",
+  "characterForward": "+Z",
+  "footplane": 0,
+  "anchors": {
+    "knead": [
+      -1.5,
+      0,
+      0.2
+    ],
+    "oven": [
+      -2.6,
+      0,
+      -1.0
+    ],
+    "machine": [
+      0.5,
+      0,
+      -1.4
+    ],
+    "counter": [
+      -0.8,
+      0,
+      1.8
+    ],
+    "rest": [
+      3.7,
+      0,
+      0.8
+    ],
+    "study": [
+      3.6,
+      0,
+      -2.3
+    ],
+    "delivery": [
+      0.5,
+      0,
+      3.3
+    ]
+  },
+  "bounds": {
+    "x": [
+      -6,
+      6
+    ],
+    "z": [
+      -5,
+      5
+    ]
+  },
+  "suggestedCamera": [
+    11,
+    12,
+    15
+  ],
+  "cameraTarget": [
+    0,
+    0.5,
+    0
+  ],
+  "actions": [
+    "Machine_Mix"
+  ],
+  "editableSource": "bakery-editable.blend",
+  "generator": "build_bakery.py",
+  "runtime": "bakery-environment.glb",
+  "textures": "None. Original clay PBR materials, no external textures.",
+  "sourceLicense": "Original generated asset; no third-party assets.",
+  "polygonCountBeforeTriangulation": 86408,
+  "runtimeStats": {
+    "bytes": 6551652,
+    "triangles": 160616,
+    "meshPrimitives": 28,
+    "materials": 27
+  },
+  "navigation": {
+    "frontCorridorZ": 0.35,
+    "eastWorkCorridorX": 1.9,
+    "westWorkCorridorX": -2.6,
+    "gardenCorridorX": 2.4,
+    "kneadTableObstacle": {
+      "minX": -2.4,
+      "maxX": -0.6,
+      "minZ": -1.03,
+      "maxZ": -0.08
+    }
+  }
+}

@@ -1,22 +1,16 @@
-# Verification
+# Verification — bakery v5
 
-The specified v3 source candidate was verified on Mac: archive SHA256 `6b4bfd9392523f369bc39d7c91af63ed54e45b88ab8b08373325e0221d8b9cdf`; all 41 manifest file hashes matched. The 28 code/test/model/configuration files in this public checkout match that candidate. Public docs and ignore rules are maintained separately.
-
-The canonical Site version is reported as commit `71aa37b08a4a4140c34825d00282bbccff16845c`; this repository has independent Git history.
+Source commit: `a779f9d3d921c9107a5817657c3b8fb113933c64`, Site version 5. The supplied archive SHA256 is `0d201b84e555ba847e7166c489730dabe6a15a78d6cd3c9e9e78ce149448824c`; all 58 manifest file hashes were verified on Mac. The 42 executable source/test/model/portrait/configuration files in this checkout match the candidate. Public running/verification docs and ignore rules are maintained separately; old run logs and hosting/runtime metadata are excluded.
 
 ## Passed on Mac
 
-- `npm test`: 26 passed, 0 failed, 0 skipped.
-- `npm run build`: TypeScript and Vite production build succeeded on Node 22.19.0.
-- Daily missed-meal names reconcile with daily unmet meals, including the previously observed mixed-policy day-six scenario.
-- Reload guidance correctly reflects 2, 1 and 0 remaining actions.
-- Selected-firm funding reaches that firm and consumes one action.
-- Deterministic engine review reproduced 101 meals, 43 shifts and ¥29.37 reserve using two policy actions in seven days.
+- `npm test`: 39 passed, 0 failed, 0 skipped. The bakery tests enumerate all 2,592 legal complete story paths and verify time, consent, capped demand and integer cash reconciliation.
+- Tests cover idempotent confirmation, strict save decoding, deterministic checkpoint replay, scene routes and preserved town-model regressions.
+- `npm run build`: strict TypeScript and Vite production bundling passed on Node 22.19.0.
+- Dependency lockfile unchanged from the prior verified installation.
 
-The dependency lockfile is unchanged from the prior verified installation. Tests and build do not establish browser correctness or enjoyment.
+## Browser acceptance
 
-## Pending browser gate
+The canonical cloud flow and its exact limits are recorded in [BAKERY-QA.md](BAKERY-QA.md). This local synchronization does not claim new UI tests or screenshots. Actual WebGL character movement, camera framing, shadows, loading latency and mobile frame rate remain unverified here. Automated model tests and Blender renders do not establish browser visual success. Phone acceptance remains a separate inspection gate.
 
-Actual v3 WebGL visuals, resident/building proportions, camera focus, animation, modal labels, desktop/mobile geometry, safe-area controls, browser reload and sandbox navigation still require real browser checks. Existing v2 screenshots describe the previous layout. See [PREVIEW-CHECKLIST.md](PREVIEW-CHECKLIST.md).
-
-The two-action winning strategy means late-game repetition remains a concern. The Three.js bundle exceeds Vite's 500 kB advisory threshold; actual loading/GPU/mobile performance needs profiling.
+The Three.js chunk remains above Vite's 500 kB advisory threshold; no build errors occurred.

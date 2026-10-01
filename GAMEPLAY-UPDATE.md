@@ -1,6 +1,6 @@
 # Seven-day challenge
 
-The default game starts with two actions per day, treasury ¥40, two food firms with ¥8 each and separate resident accounts. Over seven days, reach 100 meals, 40 shifts and retain at least ¥4. These are puzzle conditions, not real-policy evidence.
+The original town challenge, available from the bakery menu, starts with two actions per day, treasury ¥40, two food firms with ¥8 each and separate resident accounts. Over seven days, reach 100 meals, 40 shifts and retain at least ¥4. These are puzzle conditions, not real-policy evidence.
 
 Targeted aid transfers ¥1.80 to a selected resident. Hiring support invests ¥6: the selected firm receives it, or the council selects the lower-cash firm. Automation invests ¥10 across firms and raises productivity by 0.5×. Daily support targets ¥0.70 per resident until paused, constrained by treasury cash. Non-aid actions cannot repeat within a day. Hiring remains demand-led; increased productivity can reduce labor demand.
 

@@ -1,3 +1,3 @@
 import { createRoot } from "react-dom/client";
-import GameApp from "./GameApp";
-createRoot(document.getElementById("root")!).render(<GameApp />);
+import BakeryApp from "./BakeryApp";
+createRoot(document.getElementById("root")!).render(<BakeryApp />);

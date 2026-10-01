@@ -1,0 +1,819 @@
+.bakery-app {
+  --ink: #173e32;
+  --paper: #fff3d7;
+  --wood: #8d5e35;
+  --gold: #dca65b;
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--ink);
+  background: radial-gradient(
+    ellipse at 48% 30%,
+    #e9ecd8 0%,
+    #d7e3d6 46%,
+    #bad5d1 100%
+  );
+  font-family:
+    ui-rounded, "PingFang SC", "Microsoft Yahei", system-ui, sans-serif;
+  font-size: 16px;
+}
+.bakery-app * {
+  box-sizing: border-box;
+}
+.bakery-app button {
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.35;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid #b9936059;
+  border-radius: 16px;
+  background: #fff5df;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 2px 0 #97744a12;
+  transition:
+    background 0.16s,
+    transform 0.16s;
+}
+.bakery-app button:hover {
+  background: #ffecc7;
+  border-color: #a78650;
+}
+.bakery-app button:active {
+  transform: translateY(1px);
+}
+.bakery-app button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.bakery-app button:focus-visible {
+  outline: 3px solid #d48a32;
+  outline-offset: 3px;
+}
+.bakery-app h1,
+.bakery-app h2,
+.bakery-app h3,
+.bakery-app p {
+  margin: 0;
+}
+.bakery-app .bakery-primary {
+  background: #20533f;
+  border: 1px solid #174633;
+  color: #fff8e6;
+  font-weight: 700;
+  box-shadow:
+    inset 0 1px 0 #92aa7377,
+    0 4px 0 #123c2529;
+  padding: 13px 22px;
+}
+.bakery-app .bakery-primary:hover {
+  background: #306449;
+}
+.bakery-scene {
+  position: absolute;
+  inset: 0 0 25%;
+  z-index: 0;
+  isolation: isolate;
+}
+.bakery-scene > div {
+  width: 100%;
+  height: 100%;
+}
+.bakery-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #eeefe61c,
+    transparent 30%,
+    transparent 65%,
+    #b9d0bf44
+  );
+}
+.bakery-hud {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  left: max(16px, env(safe-area-inset-left));
+  right: max(16px, env(safe-area-inset-right));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 15;
+  gap: 10px;
+  pointer-events: none;
+}
+.bakery-hud > * {
+  pointer-events: auto;
+}
+.bakery-day {
+  background: #fff4deed;
+  border: 1px solid #fff8e8;
+  border-radius: 24px;
+  padding: 13px 20px;
+  box-shadow: 0 6px 25px #506e4924;
+  backdrop-filter: blur(12px);
+}
+.bakery-day small {
+  display: block;
+  font-size: 12px;
+  color: #716e4f;
+  margin-bottom: 2px;
+  letter-spacing: 0.14em;
+}
+.bakery-day strong {
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+.bakery-hud-actions {
+  display: flex;
+  gap: 7px;
+}
+.bakery-app .bakery-round-btn {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  box-shadow: 0 4px 12px #30584220;
+  background: #fff5dfe8;
+  font-size: 19px;
+}
+.bakery-status {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: #fff8e6ed;
+  border-radius: 30px;
+  padding: 9px 17px;
+  font-size: 14px;
+  max-width: calc(100% - 24px);
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 4px 18px #3f58311c;
+}
+.bakery-tray {
+  position: absolute;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(740px, calc(100% - 28px));
+  max-height: 54dvh;
+  z-index: 20;
+  background: linear-gradient(120deg, #fff9e9, #fcebc9);
+  border: 2px solid #fff9e5;
+  border-radius: 30px;
+  box-shadow:
+    0 12px 48px #3c503c36,
+    inset 0 0 0 1px #d3b58288;
+  padding: 24px;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.bakery-tray:before {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 4px;
+  border-radius: 4px;
+  background: #d7bb89;
+  margin: -11px auto 16px;
+}
+.bakery-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #8a6842;
+  font-weight: 650;
+  margin-bottom: 6px !important;
+}
+.bakery-tray h1,
+.bakery-tray h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+.bakery-copy {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #5d654e;
+  margin-top: 10px !important;
+  max-width: 55ch;
+}
+.bakery-footer-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+.bakery-footer-row > span {
+  font-size: 13px;
+  color: #80775d;
+}
+.bakery-intro-facts {
+  display: flex;
+  gap: 10px;
+  margin-top: 17px;
+  align-items: center;
+}
+.bakery-intro-facts > span {
+  flex: 1;
+  border: 1px solid #dfc18c;
+  border-radius: 16px;
+  padding: 11px;
+  font-size: 13px;
+  text-align: center;
+  color: #807052;
+}
+.bakery-intro-facts strong {
+  display: block;
+  font-size: 25px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.bakery-intro-facts i {
+  font-style: normal;
+  color: #9a8c6b;
+}
+.bakery-planning-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.bakery-planning-title h2 {
+  font-size: 24px;
+}
+.bakery-hour-badge {
+  font-size: 13px;
+  background: #eee0bf;
+  border-radius: 30px;
+  padding: 7px 11px;
+  white-space: nowrap;
+}
+.bakery-character-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.bakery-app .bakery-character {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 5px 10px 5px 3px;
+  min-height: 76px;
+  gap: 4px;
+  border: 2px solid transparent;
+  background: #f3e5c9;
+  overflow: hidden;
+  position: relative;
+}
+.bakery-app .bakery-character.active {
+  border-color: #bd914e;
+  background: #fff6e1;
+  box-shadow: 0 0 0 2px #dfc08744;
+}
+.bakery-character img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  align-self: flex-end;
+  filter: drop-shadow(0 3px 3px #6b4d3822);
+}
+.bakery-character strong {
+  display: block;
+  font-size: 17px;
+}
+.bakery-character small {
+  display: block;
+  font-size: 12px;
+  margin-top: 3px;
+  color: #7e7358;
+}
+.bakery-quote {
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 12px 0 !important;
+  min-height: 23px;
+  color: #5c634b;
+}
+.bakery-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.bakery-app .bakery-choice {
+  position: relative;
+  border: 1px solid #cfb385;
+  border-radius: 17px;
+  background: #fff5df;
+  text-align: left;
+  padding: 12px 11px;
+  min-height: 88px;
+}
+.bakery-app .bakery-choice.chosen {
+  background: #dfe9ca;
+  border-color: #648052;
+  box-shadow: inset 0 0 0 1px #648052;
+}
+.bakery-choice strong {
+  display: block;
+  font-size: 16px;
+}
+.bakery-choice small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.35;
+  margin-top: 5px;
+  color: #7f735a;
+}
+.bakery-choice .choice-symbol {
+  font-size: 21px;
+  display: block;
+  margin-bottom: 5px;
+  color: #8a6339;
+}
+.bakery-choice .choice-tick {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  font-size: 13px;
+  color: #24513a;
+}
+.bakery-plan-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 14px;
+  align-items: center;
+}
+.bakery-plan-footer .bakery-primary {
+  flex: 1;
+  max-width: 280px;
+}
+.bakery-app .bakery-text-btn {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 7px;
+  font-size: 13px;
+  color: #6e6d52;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.bakery-prompt {
+  font-size: 12px;
+  color: #827050;
+  line-height: 1.4;
+  margin-top: 10px !important;
+}
+.bakery-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #203f3475;
+  backdrop-filter: blur(7px);
+  padding: 18px;
+}
+.bakery-modal {
+  position: relative;
+  background: linear-gradient(125deg, #fff9e9, #f9e9c9);
+  border: 2px solid #fff6df;
+  border-radius: 28px;
+  box-shadow: 0 24px 80px #123d3766;
+  width: min(560px, 100%);
+  max-height: calc(
+    100dvh - 50px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
+  padding: 28px;
+  overflow: auto;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.bakery-modal h2 {
+  font-size: 26px;
+  margin: 0 30px 14px 0;
+}
+.bakery-modal h3 {
+  font-size: 18px;
+  margin: 20px 0 8px;
+}
+.bakery-modal p {
+  margin: 10px 0;
+  color: #666b51;
+}
+.bakery-modal .bakery-close {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  min-height: 38px;
+  border: 0;
+  font-size: 22px;
+}
+.bakery-modal .bakery-primary {
+  width: 100%;
+  margin-top: 16px;
+}
+.bakery-review-person {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #d7bd904f;
+}
+.bakery-review-person img {
+  width: 59px;
+  height: 59px;
+  object-fit: contain;
+}
+.bakery-review-person strong {
+  font-size: 17px;
+}
+.bakery-review-person p {
+  font-size: 14px;
+  margin: 2px 0;
+}
+.bakery-review-math {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.bakery-review-math dt,
+.bakery-review-math dd {
+  margin: 0;
+}
+.bakery-review-math dd {
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+.bakery-review-math .total {
+  border-top: 1px solid #bea47a;
+  padding-top: 10px;
+  font-size: 17px;
+}
+.bakery-progress {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+}
+.bakery-progress span {
+  height: 6px;
+  flex: 1;
+  border-radius: 6px;
+  background: #decba8;
+}
+.bakery-progress span.done {
+  background: #74906a;
+}
+.bakery-report-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 15px;
+}
+.bakery-report-cards > div {
+  background: #f7e8c9;
+  border-radius: 16px;
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid #e3cfa6;
+}
+.bakery-report-cards strong {
+  font-size: 23px;
+  display: block;
+  line-height: 1.3;
+}
+.bakery-report-cards small {
+  font-size: 12px;
+  color: #7a7259;
+  display: block;
+  margin-top: 4px;
+}
+.bakery-report-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #546149;
+  line-height: 1.5;
+}
+.bakery-report-line img {
+  width: 38px;
+  height: 44px;
+  object-fit: contain;
+}
+.bakery-ledger {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.bakery-ledger th,
+.bakery-ledger td {
+  text-align: left;
+  padding: 8px 4px;
+  border-bottom: 1px solid #ccb99155;
+}
+.bakery-ledger td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.bakery-menu-items {
+  display: grid;
+  gap: 10px;
+}
+.bakery-load,
+.bakery-person-label {
+  font-size: 14px;
+  white-space: nowrap;
+  color: #34523c;
+  background: #fff5dfee;
+  padding: 9px 13px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px #40583825;
+}
+.bakery-fallback {
+  position: absolute;
+  inset: 18% 10% 40%;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  color: #315140;
+  font-size: 16px;
+  gap: 12px;
+}
+.bakery-fallback p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.bakery-error-note {
+  color: #91492f !important;
+  background: #ffe1be;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.bakery-back {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 300;
+  background: #fff1d6 !important;
+  color: #214c37 !important;
+  font-size: 14px !important;
+  box-shadow: 0 3px 15px #334b3344;
+}
+.bakery-compact-report {
+  max-height: 42dvh;
+}
+.bakery-audio {
+  font-size: 13px !important;
+}
+.bakery-chip {
+  display: inline-block;
+  font-size: 12px;
+  border: 1px solid #c8af80;
+  border-radius: 20px;
+  padding: 3px 9px;
+  color: #78694c;
+}
+.bakery-choice-grid .unavailable {
+  font-size: 11px;
+  color: #9e5834;
+}
+.bakery-consent {
+  display: block;
+  border: 1px solid #ccb183;
+  border-radius: 15px;
+  padding: 11px;
+  margin-top: 12px;
+}
+.bakery-consent input {
+  margin-right: 10px;
+  accent-color: #31573c;
+}
+.bakery-toast {
+  position: absolute;
+  z-index: 40;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  width: max-content;
+  background: #244b3cef;
+  color: #fff5de;
+  border-radius: 17px;
+  padding: 12px 18px;
+  font-size: 14px;
+  box-shadow: 0 8px 25px #203d3d33;
+}
+@media (max-width: 600px) {
+  .bakery-hud {
+    top: max(10px, env(safe-area-inset-top));
+    left: 12px;
+    right: 12px;
+  }
+  .bakery-day {
+    padding: 10px 16px;
+    border-radius: 20px;
+  }
+  .bakery-day strong {
+    font-size: 21px;
+  }
+  .bakery-day small {
+    font-size: 11px;
+  }
+  .bakery-hud-actions {
+    gap: 5px;
+  }
+  .bakery-app .bakery-round-btn {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+  .bakery-status {
+    top: 87px;
+    font-size: 13px;
+    padding: 8px 13px;
+  }
+  .bakery-scene {
+    bottom: 31%;
+  }
+  .bakery-tray {
+    width: calc(100% - 20px);
+    bottom: max(10px, env(safe-area-inset-bottom));
+    padding: 19px 16px 17px;
+    border-radius: 25px;
+    max-height: 53dvh;
+  }
+  .bakery-tray:before {
+    margin: -8px auto 12px;
+  }
+  .bakery-planning-title h2 {
+    font-size: 21px;
+  }
+  .bakery-copy {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .bakery-character-row {
+    margin-top: 11px;
+    gap: 7px;
+  }
+  .bakery-app .bakery-character {
+    min-height: 65px;
+    border-radius: 15px;
+  }
+  .bakery-character img {
+    width: 51px;
+    height: 57px;
+  }
+  .bakery-character strong {
+    font-size: 16px;
+  }
+  .bakery-character small {
+    font-size: 11px;
+  }
+  .bakery-choice strong {
+    font-size: 14px;
+  }
+  .bakery-app .bakery-choice {
+    min-height: 84px;
+    padding: 10px 8px;
+    border-radius: 14px;
+  }
+  .bakery-choice small {
+    font-size: 11px;
+  }
+  .bakery-choice .choice-symbol {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+  .bakery-quote {
+    font-size: 13px;
+    margin: 10px 0 !important;
+    line-height: 1.45;
+  }
+  .bakery-plan-footer {
+    margin-top: 11px;
+  }
+  .bakery-app .bakery-primary {
+    padding: 12px 14px;
+  }
+  .bakery-prompt {
+    font-size: 11px;
+  }
+  .bakery-modal {
+    padding: 24px 20px;
+  }
+  .bakery-modal h2 {
+    font-size: 23px;
+  }
+  .bakery-footer-row {
+    margin-top: 15px;
+  }
+  .bakery-footer-row > span {
+    font-size: 12px;
+  }
+  .bakery-report-cards strong {
+    font-size: 21px;
+  }
+  .bakery-report-line {
+    font-size: 13px;
+  }
+  .bakery-compact-report {
+    max-height: 45dvh;
+  }
+}
+@media (max-height: 650px) {
+  .bakery-tray {
+    max-height: 55dvh;
+    padding-top: 15px;
+  }
+  .bakery-tray:before {
+    display: none;
+  }
+  .bakery-choice .choice-symbol {
+    display: none;
+  }
+  .bakery-status {
+    top: 75px;
+  }
+  .bakery-character-row {
+    margin-top: 7px;
+  }
+  .bakery-quote {
+    margin: 6px 0 !important;
+  }
+  .bakery-app .bakery-choice {
+    min-height: 65px;
+  }
+  .bakery-report-line {
+    margin-top: 5px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bakery-app * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+.bakery-app button.bakery-report-line {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  min-height: 44px;
+}
+.bakery-app button.bakery-report-line:hover {
+  background: #eeddbb;
+}
+.bakery-scene > .bakery-fallback {
+  height: auto;
+  inset: 150px 8% auto;
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
+  border: 1px solid #ffffff88;
+  background: #eff2dfcc;
+  border-radius: 20px;
+}
+.bakery-tray > .bakery-footer-row,
+.bakery-tray > .bakery-plan-footer {
+  position: sticky;
+  bottom: -1px;
+  z-index: 2;
+  padding-top: 10px;
+  background: linear-gradient(0deg, #fcedce 85%, #fcedce00);
+}
+.bakery-compact-report {
+  max-height: 50dvh;
+}
+@media (max-width: 600px) {
+  .bakery-scene > .bakery-fallback {
+    inset: 130px 6% auto;
+    padding: 13px;
+    font-size: 14px;
+  }
+  .bakery-scene > .bakery-fallback p {
+    font-size: 13px;
+  }
+  .bakery-compact-report {
+    max-height: 50dvh;
+  }
+}

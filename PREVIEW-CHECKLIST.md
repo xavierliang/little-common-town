@@ -1,5 +1,15 @@
 # Browser playtest checklist
 
+## Bakery v5
+
+- Inspect real WebGL environment, character proportions, focus, movement routes, shadows and loading.
+- On mobile, verify safe-area controls, sticky actions, readable forecasts and character details.
+- Exercise the four two-person decisions through day seven, undo, consent limits and wage acknowledgment.
+- Check repeated confirmation, reload, export/import, checkpoint rewind and equal-horizon comparison.
+- Keep visual/performance acceptance separate from model accounting tests and fallback UI checks.
+
+## Preserved town challenge
+
 - Verify actual WebGL model rendering, camera, resident selection, selected labels, and result replay.
 - Complete all seven days using two-action limits and daily result dialogs.
 - Exercise aid, firm funding, automation, and recurring support.
