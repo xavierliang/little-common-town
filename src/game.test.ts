@@ -1,6 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { newGame, act, nextDay, goals, encodeGame, decodeGame } from "./game";
+import {
+  newGame,
+  act,
+  nextDay,
+  goals,
+  encodeGame,
+  decodeGame,
+  turnInstruction,
+} from "./game";
 import { applyCommand, validateState, metrics, serialize } from "./sim";
 test("challenge starts paused-ready with explicit budget and separate endowments", () => {
   const g = newGame();
@@ -85,4 +93,48 @@ test("seven day puzzle has win and fail strategies, equal-seed replay and termin
     replay = nextDay(replay);
   }
   assert.equal(serialize(replay.town), serialize(mixed.town));
+});
+
+test("daily missed-meal names match daily count, not cumulative hunger", () => {
+  for (const policy of ["none", "sharing"] as const) {
+    let g = newGame();
+    if (policy === "sharing") g = act(g, "sharing");
+    for (let d = 0; d < 7; d++) {
+      g = nextDay(g);
+      assert.equal(
+        g.reports.at(-1)!.hungry.length,
+        metrics(g.town).unmetNeedsToday,
+      );
+      assert.equal(
+        new Set(g.reports.at(-1)!.hungry).size,
+        g.reports.at(-1)!.hungry.length,
+      );
+    }
+  }
+});
+test("reload guidance reflects remaining actions and repairs old report names", () => {
+  let g = act(newGame(), "aid", "r1");
+  assert.match(turnInstruction(g), /还可行动 1 次/);
+  g = nextDay(g);
+  g.reports[0].hungry = ["old incorrect name"];
+  const restored = decodeGame(encodeGame(g));
+  assert.equal(
+    restored.reports[0].hungry.length,
+    metrics(g.town).unmetNeedsToday,
+  );
+  assert.match(turnInstruction(act(restored, "jobs")), /还可行动 1 次/);
+});
+test("selected firm funding reaches that firm and still costs one action", () => {
+  const initial = newGame(),
+    next = act(initial, "jobs", undefined, "f2");
+  assert.equal(
+    next.town.accounts.f2.balanceCents - initial.town.accounts.f2.balanceCents,
+    600,
+  );
+  assert.equal(
+    next.town.accounts.f1.balanceCents,
+    initial.town.accounts.f1.balanceCents,
+  );
+  assert.equal(next.actionsLeft, 1);
+  assert.deepEqual(validateState(next.town), []);
 });

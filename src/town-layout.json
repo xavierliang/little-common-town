@@ -1,0 +1,166 @@
+{
+  "version": 2,
+  "coordinateSystem": "glTF / Three.js metres: X right, Y up, Z toward riverfront. Blender authoring x,-z,y. Character assets face +Z. Static walking stone surface at Y .035; recommended character floor Y .06.",
+  "worldBounds": {
+    "min": [-12, -1.3, -8.7],
+    "max": [12, 5.5, 10.1]
+  },
+  "environment": "town_environment.glb",
+  "resident": {
+    "file": "resident.glb",
+    "scale": 0.8,
+    "height": 1.642,
+    "animations": ["Idle", "Walk"]
+  },
+  "robot": {
+    "file": "ai_helper.glb",
+    "scale": 0.94,
+    "height": 1.19
+  },
+  "buildingHotspots": [
+    {
+      "id": "home_a",
+      "label": "Duplex A",
+      "center": [-7, 1.8, -4.55],
+      "size": [3.25, 3.8, 3.1],
+      "entrance": [-7.5, 0.065, -2.7]
+    },
+    {
+      "id": "home_b",
+      "label": "Duplex B",
+      "center": [-3.4, 1.8, -5.1],
+      "size": [3.1, 3.8, 3],
+      "entrance": [-3.9, 0.065, -3.25]
+    },
+    {
+      "id": "home_c",
+      "label": "Duplex C",
+      "center": [6.9, 1.8, -4.5],
+      "size": [3.25, 3.8, 3.1],
+      "entrance": [6.4, 0.065, -2.65]
+    },
+    {
+      "id": "home_d",
+      "label": "Duplex D",
+      "center": [10.15, 1.8, -1.5],
+      "size": [3, 3.8, 3.1],
+      "entrance": [9.65, 0.065, 0.35]
+    },
+    {
+      "id": "f1",
+      "label": "Bakery",
+      "center": [-7.35, 1.8, 0.05],
+      "size": [3.55, 3.8, 3.2],
+      "entrance": [-6.8, 0.065, 2.25]
+    },
+    {
+      "id": "f2",
+      "label": "Workshop",
+      "center": [6.85, 1.8, 0.35],
+      "size": [3.55, 3.8, 3.2],
+      "entrance": [6.4, 0.065, 2.5]
+    },
+    {
+      "id": "hall",
+      "label": "Town hall",
+      "center": [1.25, 2.65, -5.1],
+      "size": [3.7, 5.5, 3.35],
+      "entrance": [0.7, 0.065, -3.1]
+    }
+  ],
+  "homeAnchors": [
+    {
+      "household": 1,
+      "building": "home_a",
+      "position": [-7.8, 0.06, -2.4000000000000004]
+    },
+    {
+      "household": 2,
+      "building": "home_a",
+      "position": [-7.2, 0.06, -2.4000000000000004]
+    },
+    {
+      "household": 3,
+      "building": "home_b",
+      "position": [-4.2, 0.06, -2.95]
+    },
+    {
+      "household": 4,
+      "building": "home_b",
+      "position": [-3.6, 0.06, -2.95]
+    },
+    {
+      "household": 5,
+      "building": "home_c",
+      "position": [6.1000000000000005, 0.06, -2.35]
+    },
+    {
+      "household": 6,
+      "building": "home_c",
+      "position": [6.7, 0.06, -2.35]
+    },
+    {
+      "household": 7,
+      "building": "home_d",
+      "position": [9.35, 0.06, 0.6499999999999999]
+    },
+    {
+      "household": 8,
+      "building": "home_d",
+      "position": [9.950000000000001, 0.06, 0.6499999999999999]
+    }
+  ],
+  "workAnchors": {
+    "f1": [-6.25, 0.06, 2.35],
+    "f2": [5.65, 0.06, 2.55]
+  },
+  "landmarks": {
+    "plaza": [0, 0.06, 1.65],
+    "centralTree": [-1.2, 0.06, -1],
+    "market": [4.6, 0.06, 3.95],
+    "farm": [-7.9, 0.06, 3.65],
+    "bridge": [-4.5, 0.12, 7.9],
+    "dock": [-7, 0.0, 8.7],
+    "hall": [0.7, 0.06, -3.1]
+  },
+  "navigation": {
+    "notes": "Route between listed lane nodes; avoid central planter circle radius1.4 at(-1.2,-1), solid building bounds, farm beds and market stalls. Bridge has raised curved floor; do not place Y=0 walkers on river. All default active resident routes stay on main island.",
+    "nodes": {
+      "NW": [-5, 0.06, -2.6],
+      "N": [0, 0.06, -2.6],
+      "NE": [5, 0.06, -2.6],
+      "W": [-5, 0.06, 1.6],
+      "C": [0, 0.06, 1.8],
+      "E": [5, 0.06, 1.8],
+      "SW": [-5, 0.06, 4.9],
+      "S": [0, 0.06, 3.1],
+      "SE": [5, 0.06, 2.7],
+      "D_HOME": [9.65, 0.06, 0.7],
+      "D_FRONT": [10, 0.06, 3.0],
+      "D_LANE": [7, 0.06, 3.0]
+    },
+    "edges": [
+      ["NW", "N"],
+      ["N", "NE"],
+      ["NW", "W"],
+      ["NE", "E"],
+      ["W", "C"],
+      ["C", "E"],
+      ["W", "SW"],
+      ["C", "S"],
+      ["E", "SE"],
+      ["S", "SE"],
+      ["D_HOME", "D_FRONT"],
+      ["D_FRONT", "D_LANE"],
+      ["D_LANE", "SE"]
+    ]
+  },
+  "recommendedCamera": {
+    "position": [23, 27, 32],
+    "target": [0, 0.65, 0.2],
+    "orthographicSpan": 27,
+    "mobileSpan": 24,
+    "note": "Use full-screen viewport; allow zoom/dolly and resident focus. Do not reduce residents below .8 scale."
+  },
+  "design": "Cohesive human-scale warm clay village: compact terracotta/blue-roof homes, single civic landmark at rear, tree social square, bakery/workshop, produce market, raised vegetable beds, river and bridge foreground. Material batched environment, untextured PBR."
+}

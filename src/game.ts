@@ -36,7 +36,12 @@ export function newGame(): Game {
     reports: [],
   };
 }
-export function act(game: Game, action: Action, residentId?: string): Game {
+export function act(
+  game: Game,
+  action: Action,
+  residentId?: string,
+  firmId?: string,
+): Game {
   if (game.town.day >= GOALS.days) throw Error("本轮已结束，请重新开始");
   if (game.actionsLeft <= 0) throw Error("今天的两次行动已用完，请结算今天");
   if (game.actionsToday.includes(action) && action !== "aid")
@@ -47,11 +52,13 @@ export function act(game: Game, action: Action, residentId?: string): Game {
     if (!residentId) throw Error("请先选一位居民");
     town = applyCommand(town, { type: "grantAid", residentId }, role);
   } else if (action === "jobs") {
-    const f = [...town.firms].sort(
-      (a, b) =>
-        town.accounts[a.accountId].balanceCents -
-        town.accounts[b.accountId].balanceCents,
-    )[0];
+    const f =
+      (firmId ? town.firms.find((f) => f.id === firmId) : undefined) ??
+      [...town.firms].sort(
+        (a, b) =>
+          town.accounts[a.accountId].balanceCents -
+          town.accounts[b.accountId].balanceCents,
+      )[0];
     town = applyCommand(town, { type: "fundFirm", firmId: f.id }, role);
   } else if (action === "automation")
     town = applyCommand(town, { type: "investAutomation" }, role);
@@ -93,7 +100,7 @@ export function nextDay(game: Game): Game {
         meals: m.consumedToday,
         shifts: m.employed,
         cash: m.treasuryCents,
-        hungry: town.residents.filter((r) => r.hunger > 0).map((r) => r.name),
+        hungry: missedMealsOnDay(town, town.day),
       },
     ],
   };
@@ -155,5 +162,37 @@ export function decodeGame(raw: string): Game {
     game.shifts !== game.town.history.reduce((n, h) => n + h.employed, 0)
   )
     throw Error("进度无效");
+  game.reports = game.reports.map((r) => ({
+    ...r,
+    hungry: missedMealsOnDay(game.town, r.day),
+  }));
   return game;
+}
+
+/** Replay the food ledger to identify this day's missed meals, not lingering hunger. */
+export function missedMealsOnDay(town: TownState, day: number): string[] {
+  if (day < 1) return [];
+  const food = Object.fromEntries(town.residents.map((r) => [r.id, 1]));
+  let missed: string[] = [];
+  for (let d = 0; d <= day; d++) {
+    for (const e of town.ledger) {
+      if (e.day !== d || e.kind !== "purchase") continue;
+      const resident = town.residents.find((r) => r.accountId === e.from),
+        firm = town.firms.find((f) => f.accountId === e.to);
+      if (resident && firm)
+        food[resident.id] += e.amountCents / firm.priceCents;
+    }
+    if (d === 0) continue;
+    missed = [];
+    for (const r of town.residents) {
+      if (food[r.id] >= 1) food[r.id]--;
+      else missed.push(r.name);
+    }
+  }
+  return missed;
+}
+export function turnInstruction(game: Game): string {
+  return game.town.day >= 7
+    ? "本轮已结束，可以查看结果或从同一起点再试。"
+    : `准备第 ${game.town.day + 1} 天，还可行动 ${game.actionsLeft} 次。先作决定，再结算今天。`;
 }

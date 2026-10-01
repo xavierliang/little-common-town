@@ -1,399 +1,598 @@
-.town-game {
-  font-family: system-ui, "Noto Sans SC", sans-serif;
-  background: #f5f3e9;
-  color: #344b3d;
-  min-height: 100dvh;
-}
-.game-header {
-  height: 64px;
-  padding: 0 24px;
-  gap: 12px;
-  border-bottom: 1px solid #dce2d2;
-}
-.game-header > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-}
-.game-header strong {
-  font-size: 19px;
-}
-.game-mark {
-  font-size: 30px;
-  color: #6d885c;
-}
-.edition {
-  color: #8b986f;
-  font-size: 12px;
-}
-.game-header button {
-  font-size: 14px;
-  padding: 8px 13px;
-}
-.game-layout {
-  max-width: 1400px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 380px;
-  gap: 24px;
-  padding: 24px;
-}
-.game-world {
-  min-width: 0;
-}
-.mission {
-  padding: 0 3px 16px;
-}
-.mission-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.mission small,
-.decision-heading small {
-  font-size: 12px;
-  color: #899775;
-}
-.mission h1 {
-  font-size: 24px;
-  margin: 5px 0 15px;
-  letter-spacing: 0;
-}
-.round {
-  font-size: 16px;
-  text-align: right;
-  font-weight: 600;
-}
-.round small {
-  display: block;
-  margin-top: 5px;
-  font-weight: 400;
-}
-.goals {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.game-goal > span {
-  display: block;
-  font-size: 12px;
-  color: #7d8f69;
-}
-.game-goal strong {
-  display: block;
-  font-size: 26px;
-  margin: 4px 0;
-}
-.game-goal em {
-  font-size: 13px;
-  font-weight: 400;
-  font-style: normal;
-  color: #9aa58b;
-}
-.goal-track {
-  height: 5px;
-  border-radius: 3px;
-  background: #dce3ce;
-  overflow: hidden;
-}
-.goal-track i {
-  display: block;
-  height: 100%;
-  background: #88a464;
-  transition: width 0.4s;
-}
-.game-map {
-  height: 480px;
-  border-radius: 19px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #c8d8b9;
-}
-.map-status {
-  position: absolute;
-  top: 13px;
-  left: 14px;
-  padding: 7px 12px;
-  border-radius: 18px;
-  background: #fffdf1e8;
-  font-size: 12px;
-  color: #6f835a;
-  pointer-events: none;
-}
-.person-chip {
-  position: absolute;
-  bottom: 13px;
-  left: 14px;
-  right: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #fffdf4ed;
-  border: 1px solid #e0e6d3;
-  border-radius: 12px;
-  padding: 11px 14px;
-}
-.person-chip strong {
-  font-size: 17px;
-}
-.person-chip span {
-  display: block;
-  font-size: 12px;
-  color: #8b9978;
-  margin-top: 3px;
-}
-.person-chip button {
-  font-size: 14px;
-  background: #efd497;
-  border-color: #dcba75;
-  color: #7a5c2f;
-}
-.resident-strip {
-  display: flex;
-  overflow: auto;
-  gap: 5px;
-  padding: 12px 0;
-  scrollbar-width: thin;
-}
-.resident-strip button {
-  flex: 0 0 66px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 7px 3px;
-  gap: 4px;
-}
-.resident-strip button.selected {
-  background: #fff9e5;
-  border-color: #d9c38f;
-}
-.resident-strip button > span {
-  width: 29px;
-  height: 29px;
-  display: grid;
-  place-items: center;
-  background: #d8e3c9;
-  border-radius: 50%;
-  font-weight: 600;
-  font-size: 14px;
-}
-.resident-strip button > span.poor {
-  background: #efd6a3;
-}
-.resident-strip button > span.hungry {
-  background: #e6b49e;
-}
-.resident-strip b {
-  font-size: 12px;
-  font-weight: 500;
-}
-.resident-strip small {
-  font-size: 10px;
-  color: #8c9b7a;
-}
-.day-facts {
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 5px;
-  border-top: 1px solid #e0e6d2;
-  font-size: 12px;
-  color: #859473;
-}
-.day-facts b {
-  color: #4c694a;
-}
-.decision-panel {
-  padding: 22px;
-  border: 1px solid #dce3cf;
-  background: #fffef7;
-  border-radius: 16px;
-  align-self: start;
-}
-.decision-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.decision-heading h2 {
-  font-size: 20px;
-  margin: 7px 0;
-}
-.action-count {
-  border-radius: 15px;
-  background: #eaf0dc;
-  padding: 7px 10px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-.game-tip {
-  font-size: 13px;
-  line-height: 1.7;
-  color: #80926b;
-  background: #f2f4e6;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 12px 0 15px;
-}
-.decision-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.decision-card {
-  text-align: left;
-  padding: 15px 12px;
-  display: flex;
-  flex-direction: column;
-  background: #fafbf3;
-  min-height: 148px;
-  border: 1px solid #dce5c9;
-  border-radius: 12px;
-}
-.decision-card:hover {
-  background: #eaf0d8;
-  border-color: #a6b987;
-}
-.decision-card strong {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 6px 0;
-}
-.decision-card b {
-  font-size: 12px;
-  font-weight: 500;
-  color: #ad8950;
-}
-.decision-card small {
-  font-size: 11px;
-  line-height: 1.7;
-  color: #8b987b;
-  margin-top: 8px;
-}
-.decision-card:disabled {
-  opacity: 0.43;
-}
-.game-feedback {
-  min-height: 62px;
-  font-size: 12px;
-  line-height: 1.7;
-  padding: 13px 0;
-  color: #7d8f6a;
-}
-.end-turn {
-  border-top: 1px solid #e6ead9;
-  padding-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.end-turn b {
-  font-size: 17px;
-}
-.end-turn small {
-  display: block;
-  color: #9da78e;
-  font-size: 10px;
-  margin-top: 5px;
-}
-.end-turn > button,
-.game-dialog .primary {
-  background: #64834e;
-  color: #fff;
-  border-color: #64834e;
-  padding: 13px 16px;
-  font-size: 15px;
-  font-weight: 600;
-}
-.game-audit {
-  font-size: 12px;
-  color: #8d9c79;
-  margin-top: 22px;
-  line-height: 1.7;
-}
-.game-audit summary {
-  cursor: pointer;
-}
-.game-audit p {
-  font-size: 11px;
-}
-.game-audit button {
-  font-size: 12px;
-}
-.game-dialog-backdrop {
+.town-play {
   position: fixed;
   inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background: #d6e4da;
+  color: #344238;
+  font-family: system-ui, "Noto Sans SC", sans-serif;
+}
+.town-play * {
+  box-sizing: border-box;
+}
+.town-viewport {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  isolation: isolate;
+}
+.town-viewport > div {
+  width: 100%;
+  height: 100%;
+}
+.town-play button {
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+  border: 1px solid #cad4c48c;
+  color: inherit;
+  background: #fffef4;
+  border-radius: 12px;
+}
+.town-play button:hover {
+  background: #f4efd9;
+  border-color: #b8c3ae;
+}
+.town-play button:active {
+  transform: translateY(1px);
+}
+.town-play button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.town-play button:focus-visible {
+  outline: 3px solid #bd8f49;
+  outline-offset: 3px;
+}
+.town-hud {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  left: 22px;
+  right: 22px;
+  z-index: 40;
+  height: auto;
+  padding: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+.town-hud > * {
+  pointer-events: auto;
+}
+.town-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fffef0e8;
+  backdrop-filter: blur(12px);
+  border: 1px solid #fff8;
+  box-shadow: 0 6px 24px #41523f12;
+  border-radius: 16px;
+  padding: 9px 15px;
+}
+.town-logo {
+  font-size: 30px;
+  color: #7d9466;
+  line-height: 1;
+}
+.town-title strong {
+  display: block;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  font-weight: 650;
+}
+.town-title small {
+  display: block;
+  font-size: 11px;
+  color: #819079;
+  margin-top: 3px;
+}
+.town-hud .hud-goals {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+  background: #fffef0e8;
+  backdrop-filter: blur(12px);
+  border-color: #fff8;
+  box-shadow: 0 6px 24px #41523f12;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+.hud-goals > span {
+  font-size: 10px;
+  color: #82927d;
+  text-align: left;
+}
+.hud-goals b {
+  display: block;
+  font-size: 19px;
+  font-weight: 600;
+  color: #4c6453;
+  line-height: 1.45;
+}
+.hud-goals i {
+  font-size: 11px;
+  color: #9ba58d;
+  font-style: normal;
+  font-weight: 400;
+}
+.hud-goals b.warning {
+  color: #bc754c;
+}
+.town-hud .hud-help {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fffef1e8;
+  font-size: 18px;
+  color: #708268;
+}
+.world-tools {
+  position: absolute;
+  z-index: 35;
+  left: 22px;
+  top: 108px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.world-tools button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 56px;
+  padding: 10px 5px;
+  background: #fffef0e6;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px #3b513c0d;
+}
+.world-tools svg {
+  width: 20px;
+  height: 20px;
+  color: #708565;
+}
+.world-tools span {
+  font-size: 10px;
+}
+.world-hint {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  background: #344c3d91;
+  color: #fffdf0;
+  padding: 7px 13px;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.context-tray {
+  position: absolute;
   z-index: 50;
-  background: #263d335c;
-  backdrop-filter: blur(5px);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(620px, calc(100% - 36px));
+  max-height: calc(100dvh - 170px);
+  background: #fffef4f0;
+  border: 1px solid #ffffffe3;
+  box-shadow: 0 14px 55px #32493126;
+  backdrop-filter: blur(22px);
+  border-radius: 22px;
+  padding: 16px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.tray-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tray-heading > div {
+  min-width: 0;
+  flex: 1;
+}
+.tray-heading small {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #9aa382;
+}
+.tray-heading h1 {
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 1px 0;
+  color: #425b49;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.action-pips {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.action-pips > i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dce1cc;
+}
+.action-pips > i.available {
+  background: #d6ae65;
+}
+.action-pips b {
+  font-size: 10px;
+  color: #93a082;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.town-play .tray-toggle {
+  border: 0;
+  background: transparent;
+  font-size: 23px;
+  color: #829376;
+  width: 30px;
+  padding: 0;
+}
+.tray-body {
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.tray-note {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #859277;
+  margin: 7px 0 10px;
+}
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.town-play .context-action {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 13px;
+  background: #f4f4e9;
+  border: 1px solid #e3e8d7;
+  min-height: 68px;
+}
+.context-action > svg {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  color: #a48b55;
+}
+.context-action > span {
+  min-width: 0;
+}
+.context-action strong {
+  font-size: 13px;
+  display: block;
+  font-weight: 600;
+  color: #586b4f;
+}
+.context-action small {
+  font-size: 10px;
+  display: block;
+  color: #a0a78b;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.town-play .context-action:hover {
+  background: #eaeedc;
+  border-color: #a8b78d;
+}
+.turn-message {
+  font-size: 11px;
+  color: #9c9c7f;
+  line-height: 1.6;
+  margin: 9px 0 0;
+  min-height: 17px;
+}
+.tray-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #e4e8d7;
+  margin-top: 12px;
+  padding-top: 12px;
+}
+.town-play .council-link {
+  border: 0;
+  background: none;
+  padding: 0;
+  text-align: left;
+  font-size: 12px;
+  color: #7e9070;
+}
+.council-link small {
+  display: block;
+  font-size: 10px;
+  color: #a8ae95;
+  margin-top: 4px;
+}
+.town-play .settle-button {
+  min-width: 175px;
+  padding: 10px 22px;
+  background: #68845c;
+  border: 1px solid #68845c;
+  color: #fffef1;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px #45613d17;
+}
+.town-play .settle-button:hover {
+  background: #55724a;
+}
+.settle-button span {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  color: #d3e0c6;
+  margin-top: 3px;
+}
+.context-tray.is-collapsed {
+  padding-top: 10px;
+}
+.context-tray.is-collapsed .tray-footer {
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.resident-facts,
+.result-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 12px 0;
+}
+.resident-facts small,
+.result-facts small {
+  display: block;
+  font-size: 10px;
+  color: #93a080;
+}
+.resident-facts strong,
+.result-facts strong {
+  font-size: 20px;
+  font-weight: 550;
+  color: #4d664e;
+  display: block;
+  margin-top: 5px;
+}
+.house-members {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.house-members button {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  text-align: left;
+  gap: 4px 8px;
+  padding: 12px;
+}
+.house-members span {
+  grid-row: 1/3;
   display: grid;
   place-items: center;
-  padding: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #dfe6cf;
+  color: #748b5e;
 }
-.game-dialog {
-  max-width: 490px;
+.house-members strong {
+  font-size: 13px;
+}
+.house-members small {
+  font-size: 10px;
+  color: #99a085;
+}
+.town-modal-backdrop {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  background: #2d433b66;
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.town-modal {
+  position: relative;
+  background: #fffef3;
+  border: 1px solid #fffffff0;
+  border-radius: 24px;
+  padding: 30px;
+  max-width: 550px;
   width: 100%;
   max-height: 85dvh;
   overflow: auto;
-  background: #fffef5;
-  border-radius: 20px;
-  padding: 27px;
-  box-shadow: 0 25px 100px #19302540;
+  box-shadow: 0 30px 100px #263b3640;
 }
-.game-dialog > small {
-  font-size: 12px;
-  color: #94a07c;
+.town-play .modal-close {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 25px;
+  color: #9ba88c;
 }
-.game-dialog h2 {
-  font-size: 26px;
+.modal-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #99a68c;
+  display: block;
+  padding-right: 20px;
+}
+.town-modal h2 {
+  font-size: 25px;
   line-height: 1.5;
-  margin: 10px 0 20px;
+  font-weight: 600;
+  color: #46624c;
+  margin: 8px 0 21px;
 }
-.game-dialog p,
-.game-dialog li {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #80936e;
+.town-modal p,
+.town-modal li {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #829474;
 }
-.game-dialog ol {
+.town-modal ol {
   padding-left: 20px;
 }
-.game-dialog .small {
-  font-size: 12px;
+.town-modal .modal-note {
+  font-size: 11px;
+  color: #a5ad96;
 }
-.game-dialog > button {
+.town-play .modal-primary,
+.town-play .modal-secondary {
   display: block;
   width: 100%;
+  padding: 12px;
   margin-top: 12px;
   font-size: 14px;
 }
-.game-dialog .subtle {
-  border: 0;
-  background: transparent;
-  color: #9aa98a;
+.town-play .modal-primary {
+  background: #6b875b;
+  color: white;
+  border-color: #6b875b;
 }
-.result-numbers {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #e8ecd8;
-  border-bottom: 1px solid #e8ecd8;
-  padding: 18px 0;
+.town-play .modal-secondary {
+  background: #fafbf0;
 }
-.result-numbers strong {
+.result-facts {
+  border-top: 1px solid #e8ecd9;
+  border-bottom: 1px solid #e8ecd9;
+  padding: 16px 0;
+  margin: 15px 0;
+}
+.result-facts strong {
   font-size: 23px;
 }
-.result-numbers span {
-  display: block;
-  font-size: 11px;
-  color: #9ca987;
-  margin-top: 5px;
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
 }
-.game-goal .danger {
-  color: #ba7852;
+.roster-grid button {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  text-align: left;
+  gap: 3px 8px;
+  padding: 11px;
+}
+.roster-grid span {
+  grid-row: 1/3;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e0e8cf;
+  color: #778e67;
+}
+.roster-grid span.needs-food {
+  background: #e8c3a8;
+  color: #a0673d;
+}
+.roster-grid strong {
+  font-size: 13px;
+  color: #607754;
+}
+.roster-grid small {
+  font-size: 10px;
+  color: #a3ad94;
+}
+.goal-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 22px 0;
+  font-size: 13px;
+  color: #869874;
+  gap: 10px;
+}
+.goal-row strong {
+  font-size: 14px;
+  color: #657d58;
+}
+.goal-row > i {
+  height: 6px;
+  background: #e8ecd9;
+  border-radius: 4px;
+  grid-column: 1/3;
+  overflow: hidden;
+}
+.goal-row > i > b {
+  display: block;
+  height: 100%;
+  background: #b0bd86;
+}
+.recent-ledger {
+  max-height: 280px;
+  overflow: auto;
+}
+.recent-ledger > div {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #edf0e3;
+  font-size: 11px;
+  color: #95a084;
+}
+.recent-ledger b {
+  white-space: nowrap;
+  font-weight: 500;
+  color: #6f8661;
+}
+.modal-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.modal-row button {
+  flex: 1;
+  font-size: 11px;
+  padding: 10px;
+}
+.world-error {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 330px;
+  text-align: center;
+  padding: 24px;
+  border-radius: 18px;
+  background: #fffdebdc;
+  color: #849370;
+  font-size: 13px;
+}
+.world-error p {
+  font-size: 11px;
+  line-height: 1.8;
 }
 .sandbox-return {
   display: flex;
@@ -404,219 +603,296 @@
   font-size: 12px;
   color: #819369;
 }
-.game-map-error {
-  padding: 90px 25px;
-  text-align: center;
-  font-size: 14px;
+.town-play .citizen-name {
+  font-size: 12px;
+  border: 0;
+  padding: 4px 9px;
+  border-radius: 10px;
+  background: #fff6dfe8;
+  color: #8b713d;
+  white-space: nowrap;
 }
-.town-game .citizen-name {
+.town-play .map-label {
   font-size: 11px;
+  background: #fffbeccc;
   padding: 5px 9px;
-}
-.town-game .map-label {
-  font-size: 10px;
-  background: #fffdf0bd;
+  border-radius: 10px;
+  color: #6f795c;
   pointer-events: none;
 }
-@media (max-width: 1000px) {
-  .game-layout {
-    grid-template-columns: minmax(0, 1fr) 330px;
-    gap: 15px;
-    padding: 16px;
-  }
-  .decision-panel {
-    padding: 16px;
-  }
-  .game-map {
-    height: 440px;
-  }
-  .edition {
-    display: none;
-  }
-  .decision-card {
-    padding: 10px;
-  }
-}
-@media (max-width: 760px) {
-  .game-header {
-    height: 52px;
-    padding: 0 14px;
-    gap: 7px;
-  }
-  .game-header strong {
-    font-size: 17px;
-  }
-  .game-header button {
-    font-size: 12px;
-    padding: 6px 9px;
-  }
-  .game-layout {
-    display: flex;
-    flex-direction: column;
-    padding: 13px 12px 100px;
-    gap: 10px;
-  }
-  .mission {
-    padding-bottom: 10px;
-  }
-  .mission h1 {
-    font-size: 19px;
-    margin-bottom: 10px;
-  }
-  .mission small {
-    font-size: 10px;
-  }
-  .round {
-    font-size: 13px;
-  }
-  .goals {
-    gap: 12px;
-  }
-  .game-goal > span {
-    font-size: 10px;
-  }
-  .game-goal strong {
-    font-size: 21px;
-    margin: 3px 0;
-  }
-  .game-goal em {
-    font-size: 11px;
-  }
-  .game-map {
-    height: 31dvh;
-    min-height: 215px;
-    max-height: 300px;
-  }
-  .map-status {
-    font-size: 10px;
-    padding: 5px 9px;
-    top: 8px;
+@media (max-width: 700px) {
+  .town-hud {
     left: 10px;
+    right: 10px;
+    top: max(10px, env(safe-area-inset-top));
+    gap: 6px;
   }
-  .person-chip {
-    bottom: 8px;
-    left: 8px;
-    right: 8px;
-    padding: 7px 10px;
+  .town-title {
+    padding: 7px 9px;
+    gap: 5px;
+    border-radius: 12px;
   }
-  .person-chip strong {
-    font-size: 14px;
-  }
-  .person-chip span {
-    font-size: 10px;
-  }
-  .person-chip button {
-    font-size: 12px;
-    padding: 8px 10px;
-  }
-  .resident-strip {
-    padding: 6px 0;
-    gap: 2px;
-  }
-  .resident-strip button {
-    flex-basis: 53px;
-    padding: 4px 1px;
-    gap: 2px;
-  }
-  .resident-strip button > span {
-    width: 23px;
-    height: 23px;
-    font-size: 11px;
-  }
-  .resident-strip b {
-    font-size: 10px;
-  }
-  .resident-strip small {
-    font-size: 9px;
-  }
-  .day-facts {
-    font-size: 10px;
-    padding: 7px 0;
-  }
-  .decision-panel {
-    border: 0;
-    background: transparent;
-    padding: 4px 0;
-  }
-  .decision-heading h2 {
-    font-size: 18px;
-    margin: 4px 0;
-  }
-  .decision-heading small {
-    display: none;
-  }
-  .action-count {
-    font-size: 11px;
-    padding: 6px 9px;
-  }
-  .game-tip {
-    font-size: 12px;
-    padding: 9px 11px;
-    margin: 8px 0;
-  }
-  .decision-cards {
-    gap: 8px;
-  }
-  .decision-card {
-    min-height: 111px;
-    position: relative;
-    background: #fffef6;
-    padding: 11px 12px;
-  }
-  .decision-card strong {
-    font-size: 14px;
-    margin: 2px 0 6px;
-  }
-  .decision-card b {
-    font-size: 12px;
-  }
-  .decision-card small {
-    font-size: 11px;
-    line-height: 1.5;
-    margin-top: 6px;
-  }
-  .game-feedback {
-    font-size: 12px;
-    padding: 10px 2px;
-    min-height: 0;
-  }
-  .end-turn {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    background: #fffef4f7;
-    backdrop-filter: blur(10px);
-    padding: 11px 15px max(12px, env(safe-area-inset-bottom));
-    box-shadow: 0 -5px 25px #30442e0a;
-    border-top: 1px solid #d9e2cb;
-  }
-  .end-turn > button {
-    padding: 12px 20px;
-    font-size: 15px;
-  }
-  .end-turn b {
-    font-size: 15px;
-  }
-  .game-audit {
-    margin: 15px 0;
-  }
-  .game-dialog {
-    padding: 23px;
-  }
-  .game-dialog h2 {
+  .town-logo {
     font-size: 23px;
   }
-  .game-dialog p {
+  .town-title strong {
     font-size: 13px;
+    letter-spacing: 0;
+  }
+  .town-title small {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+  .town-hud .hud-goals {
+    padding: 7px 10px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+  .hud-goals > span {
+    font-size: 8px;
+  }
+  .hud-goals b {
+    font-size: 14px;
+  }
+  .hud-goals i {
+    font-size: 9px;
+  }
+  .town-hud .hud-help {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    flex: 0 0 30px;
+  }
+  .world-tools {
+    left: 10px;
+    top: 79px;
+    gap: 6px;
+  }
+  .world-tools button {
+    width: 41px;
+    padding: 7px 4px;
+    border-radius: 11px;
+    gap: 3px;
+  }
+  .world-tools svg {
+    width: 17px;
+    height: 17px;
+  }
+  .world-tools span {
+    font-size: 9px;
+  }
+  .world-hint {
+    top: 78px;
+    font-size: 9px;
+    padding: 5px 9px;
+    left: auto;
+    right: 10px;
+    transform: none;
+    max-width: calc(100% - 85px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .context-tray {
+    width: calc(100% - 16px);
+    bottom: max(8px, env(safe-area-inset-bottom));
+    border-radius: 20px;
+    padding: 12px 13px 11px;
+    max-height: 52dvh;
+  }
+  .tray-heading h1 {
+    font-size: 16px;
+  }
+  .tray-heading small {
+    font-size: 9px;
+  }
+  .action-pips b {
+    font-size: 9px;
+  }
+  .action-pips > i {
+    width: 6px;
+    height: 6px;
+  }
+  .tray-note {
+    font-size: 11px;
+    line-height: 1.55;
+    margin: 6px 0 8px;
+  }
+  .town-play .context-action {
+    padding: 9px 8px;
+    gap: 7px;
+    min-height: 59px;
+    border-radius: 11px;
+  }
+  .context-action > svg {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+  .context-action strong {
+    font-size: 12px;
+  }
+  .context-action small {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+  .turn-message {
+    font-size: 10px;
+    margin-top: 7px;
+    line-height: 1.5;
+  }
+  .tray-footer {
+    margin-top: 9px;
+    padding-top: 9px;
+    gap: 8px;
+  }
+  .town-play .council-link {
+    font-size: 10px;
+  }
+  .council-link small {
+    font-size: 9px;
+  }
+  .town-play .settle-button {
+    min-width: 150px;
+    font-size: 14px;
+    padding: 9px 16px;
+  }
+  .settle-button span {
+    font-size: 8px;
+  }
+  .resident-facts {
+    margin: 9px 0;
+  }
+  .resident-facts strong {
+    font-size: 18px;
+  }
+  .town-modal-backdrop {
+    padding: 14px;
+  }
+  .town-modal {
+    padding: 25px 21px;
+    border-radius: 22px;
+    max-height: 84dvh;
+  }
+  .town-modal h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .town-modal p,
+  .town-modal li {
+    font-size: 12px;
+  }
+  .roster-grid {
+    gap: 6px;
+  }
+  .roster-grid button {
+    padding: 9px 7px;
+    grid-template-columns: 27px 1fr;
+    gap: 3px 6px;
+  }
+  .roster-grid span {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+  .roster-grid strong {
+    font-size: 12px;
+  }
+  .roster-grid small {
+    font-size: 9px;
+  }
+  .result-facts strong {
+    font-size: 20px;
   }
   .sandbox-return span {
     display: none;
   }
 }
+@media (max-height: 600px) and (min-width: 701px) {
+  .context-tray {
+    left: auto;
+    right: 16px;
+    transform: none;
+    width: 390px;
+    bottom: 14px;
+    max-height: calc(100dvh - 105px);
+  }
+  .town-hud {
+    top: 10px;
+  }
+  .world-hint {
+    top: 85px;
+  }
+  .tray-heading h1 {
+    font-size: 16px;
+  }
+  .tray-note {
+    font-size: 11px;
+  }
+  .context-action strong {
+    font-size: 12px;
+  }
+  .context-action small {
+    font-size: 9px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .goal-track i {
-    transition: none;
+  .town-play * {
+    transition: none !important;
+  }
+}
+/* Regular action copy remains readable above the full-screen world. */
+.context-action strong {
+  font-size: 14px;
+}
+.context-action small {
+  font-size: 12px;
+}
+.tray-note {
+  font-size: 13px;
+}
+.turn-message {
+  font-size: 12px;
+}
+.town-modal p,
+.town-modal li {
+  font-size: 14px;
+}
+.world-tools span {
+  font-size: 11px;
+}
+@media (max-width: 700px) {
+  .context-action strong {
+    font-size: 14px;
+  }
+  .context-action small {
+    font-size: 11px;
+  }
+  .tray-note {
+    font-size: 12px;
+  }
+  .turn-message {
+    font-size: 11px;
+  }
+  .town-modal p,
+  .town-modal li {
+    font-size: 14px;
+  }
+  .hud-goals > span {
+    font-size: 10px;
+  }
+  .town-title small {
+    font-size: 10px;
+  }
+  .roster-grid strong {
+    font-size: 14px;
+  }
+  .roster-grid small {
+    font-size: 11px;
+  }
+  .roster-grid button {
+    padding: 11px 8px;
+  }
+  .town-play .context-action {
+    min-height: 64px;
   }
 }
