@@ -35,6 +35,7 @@ import "./bakery.css";
 import { bakeryAssets } from "./bakery-assets";
 const BakeryScene = lazy(() => import("./BakeryScene"));
 const GameApp = lazy(() => import("./GameApp"));
+const ExperimentApp = lazy(() => import("./ExperimentApp"));
 const SAVE = "little-common-bakery-v1";
 const money = (v: number) => `¥${(v / 100).toFixed(2)}`;
 const activityNames: Record<Activity, string> = {
@@ -148,6 +149,10 @@ export default function BakeryApp() {
   const [toast, setToast] = useState("");
   const [error, setError] = useState("");
   const [legacy, setLegacy] = useState(false);
+  const [experiment, setExperiment] = useState(
+    () =>
+      new URLSearchParams(window.location.search).get("mode") === "experiment",
+  );
   const [sound, setSound] = useState(false);
   const audio = useRef<AudioContext | null>(null);
   const [beat, setBeat] = useState<SceneBeat>(idleBeat);
@@ -386,6 +391,27 @@ export default function BakeryApp() {
     };
     setToast(texts[place]);
   };
+  function enterExperiment() {
+    setModal(null);
+    setPaused(true);
+    setExperiment(true);
+    const url = new URL(window.location.href);
+    url.searchParams.set("mode", "experiment");
+    window.history.replaceState(null, "", url);
+  }
+  if (experiment)
+    return (
+      <Suspense fallback={<p>正在打开规则实验…</p>}>
+        <ExperimentApp
+          onExit={() => {
+            setExperiment(false);
+            const url = new URL(window.location.href);
+            url.searchParams.delete("mode");
+            window.history.replaceState(null, "", url);
+          }}
+        />
+      </Suspense>
+    );
   if (legacy)
     return (
       <>
@@ -506,6 +532,9 @@ export default function BakeryApp() {
                 去面包房看看
               </button>
             </div>
+            <button className="bakery-text-btn" onClick={enterExperiment}>
+              试试搬运与供给规则实验
+            </button>
           </>
         )}
         {phase === "meet" && (
@@ -828,6 +857,9 @@ export default function BakeryApp() {
                 <p className="bakery-eyebrow">面包出炉以后</p>
                 <h2>小镇手册</h2>
                 <div className="bakery-menu-items">
+                  <button onClick={enterExperiment}>
+                    打开搬运与供给规则实验
+                  </button>
                   <button onClick={() => setModal("ledger")}>
                     看看时间与账本
                   </button>

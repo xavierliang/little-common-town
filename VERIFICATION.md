@@ -1,8 +1,20 @@
-# Verification — bakery v7 lower-face correction
+# Verification — rules supply experiment (unpublished)
+
+Base public source: `b7e9a3beb7823e3f662c87eabe6fe4c5e9a82521`, aligned to canonical Site source `f3e4704278d0adfb199fb27455279f266fbda1a1`. The experiment adds five isolated source/test/style files and a narrow entry in BakeryApp. Existing tracked model assets, dependency lockfile and story/town engines are unchanged.
+
+- Complete suite: 58 passed, 0 failed, 0 skipped, including 16 experiment tests and all prior story/town tests.
+- Strict TypeScript and production build passed on Node 22.19.0 with the unchanged locked dependencies.
+- Independent source/engine review accepted the corrected movement budget, route explanations, unstarted-task duration guard, no-task blockage diagnosis, current-state keyboard controls, mobile CSS consolidation, and engine-derived resource text.
+- Independent deterministic probes validated 19,200 states and 480 layout-edit/save round trips, including complete worker elapsed-time accounting and resource conservation.
+- A separate causal model run compared original, compact and sealed layouts for 500 seconds each. Results and limitations are in [RULES-EXPERIMENT.md](RULES-EXPERIMENT.md).
+
+Browser/WebGL/mobile interactions and screenshots remain unverified because supported UI tools are unavailable. No system permissions were changed. Source acceptance does not imply visual acceptance or demonstrated enjoyment. This experiment has not changed the public Site or GitHub main.
+
+## Preserved v7 base verification
 
 Canonical Site source: `f3e4704278d0adfb199fb27455279f266fbda1a1`, based on v6 `8ff89ae252824ec95c311f1d6a4609106d2fe5e5`. The 11,070,160-byte source archive has SHA256 `60c927c4b504d759e59f67052edb45f10c4823901620c5aa94e3b9319525f835`; all 75 manifest hashes were verified on Mac. The 57 code/test/script/model/portrait/configuration files match the final candidate. Public running/verification docs and ignore rules are maintained separately. GitHub keeps independent Git history.
 
-## Passed on Mac
+### Passed on Mac
 
 - `npm test`: 42 passed, 0 failed, 0 skipped; the complete 2,592 legal story paths remain checked.
 - `node scripts/validate-bakery-assets.mjs`: passed runtime hashes, embedded resources, exact five character clips, 18-bone rigs and environment Machine_Mix.
@@ -13,7 +25,7 @@ Canonical Site source: `f3e4704278d0adfb199fb27455279f266fbda1a1`, based on v6 `
 
 The final runtime revision is `chin-contour-v3-2026-10-01`. It selects the reviewed final correction; the earlier rejected chin candidate is not integrated. Previous published asset URLs remain for already-open tabs. Current 阿禾/小满 GLBs contain 30,650/37,244 triangles and 1,229,996/1,456,772 bytes. These are file/geometry data, not frame-rate measurements. See [BAKERY-CHIN-FIX.md](BAKERY-CHIN-FIX.md).
 
-## Separate visual acceptance
+### Separate visual acceptance
 
 The canonical owner reviewed Blender front/side/three-quarter solid and color renders. No new local browser screenshots or phone/GPU performance claims are made. Real WebGL appearance, animation contact, mobile safe-area layout and performance require separate acceptance.
 

@@ -1,0 +1,535 @@
+.exp-app {
+  --ink: #173e32;
+  --paper: #fff3d7;
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(ellipse at 50% 30%, #e9eed9, #bad5d1);
+  color: var(--ink);
+  font-family: ui-rounded, "PingFang SC", system-ui, sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: max(10px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  gap: 8px;
+}
+.exp-app * {
+  box-sizing: border-box;
+}
+.exp-app h1,
+.exp-app h2,
+.exp-app p {
+  margin: 0;
+}
+.exp-app button {
+  font: inherit;
+  font-size: 14px;
+  min-height: 44px;
+  border: 1px solid #bb9e72;
+  border-radius: 13px;
+  background: #fff5df;
+  color: var(--ink);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.exp-app button:hover {
+  background: #f7e6c5;
+}
+.exp-app button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.exp-app button:focus-visible {
+  outline: 3px solid #cf7c25;
+  outline-offset: 2px;
+}
+.exp-app button[aria-pressed="true"],
+.exp-app button.active {
+  background: #dce9cf;
+  border-color: #526f4b;
+}
+.exp-app .exp-primary {
+  background: #20533f;
+  color: #fff8e6;
+  border-color: #174633;
+  font-weight: 700;
+}
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 30;
+  pointer-events: none;
+}
+.exp-header > * {
+  pointer-events: auto;
+}
+.exp-header h1 {
+  font-size: clamp(20px, 3vw, 27px);
+  line-height: 1.25;
+}
+.exp-header p {
+  font-size: 13px;
+  color: #536754;
+  margin-bottom: 3px;
+}
+.exp-header span {
+  font-size: 14px;
+  display: block;
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+.exp-header-buttons {
+  display: flex;
+  gap: 7px;
+}
+.exp-header-buttons button {
+  padding: 8px 11px;
+}
+.exp-resources {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  z-index: 25;
+}
+.exp-resources span {
+  font-size: 14px;
+  background: #fff4deee;
+  border-radius: 12px;
+  padding: 6px 10px;
+  box-shadow: 0 3px 12px #4c633c15;
+}
+.exp-resources strong {
+  margin-left: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.exp-scene {
+  position: relative;
+  flex: 1;
+  min-height: 100px;
+  margin: 0 -10px;
+  z-index: 0;
+}
+.exp-scene > div {
+  width: 100%;
+  height: 100%;
+}
+.exp-loading {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.5;
+}
+.exp-panel {
+  position: relative;
+  z-index: 40;
+  width: min(820px, 100%);
+  align-self: center;
+  background: linear-gradient(120deg, #fff9e9, #fcebc9);
+  border: 2px solid #fff8e5;
+  border-radius: 22px;
+  box-shadow: 0 9px 32px #3c503c2a;
+  overflow: hidden;
+  flex: 0 1 auto;
+  max-height: 38dvh;
+  display: flex;
+  flex-direction: column;
+}
+.exp-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid #e2cfab;
+  padding: 6px 8px;
+  flex: none;
+}
+.exp-tabs button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  white-space: nowrap;
+  padding: 7px;
+}
+.exp-panel-content {
+  padding: 10px 14px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  min-height: 0;
+}
+.exp-bottleneck {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 650;
+  margin-bottom: 8px !important;
+}
+.exp-workers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.exp-app .exp-workers > button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 6px;
+  padding: 5px 8px;
+  min-width: 0;
+}
+.exp-workers img {
+  width: 50px;
+  height: 62px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.exp-workers strong {
+  font-size: 14px;
+}
+.exp-workers p {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 3px 0 !important;
+}
+.exp-workers small {
+  font-size: 12px;
+  color: #566852;
+  line-height: 1.4;
+}
+.exp-hint {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #566852;
+  margin-top: 8px !important;
+}
+.exp-notice {
+  background: #e9dfbf;
+  color: #5b573b;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 10px;
+  padding: 8px;
+  margin-top: 8px !important;
+}
+.exp-facilities {
+  display: flex;
+  gap: 6px;
+}
+.exp-facilities button {
+  flex: 1;
+  padding: 8px 5px;
+  white-space: nowrap;
+}
+.exp-route-cost {
+  font-size: 14px;
+  margin: 8px 0 !important;
+  color: #476343;
+}
+.exp-layout-input {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.exp-grid {
+  width: min(315px, 65%);
+  flex-shrink: 0;
+}
+.exp-grid > [role="row"] {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 2px;
+  margin: 2px 0;
+}
+.exp-app .exp-grid button {
+  border-radius: 5px;
+  min-height: 25px;
+  aspect-ratio: 1.2;
+  padding: 0;
+  font-size: 14px;
+  border-color: #d2bd95;
+  background: #e8e8cf;
+}
+.exp-app .exp-grid button.wall {
+  background: #718b63;
+  border: 1px solid #5e7351;
+  opacity: 1;
+  color: #fff;
+}
+.exp-app .exp-grid button.chosen {
+  background: #e7b26e;
+  border-color: #925728;
+}
+.exp-nudge {
+  display: grid;
+  grid-template-columns: 44px 44px 44px;
+  grid-template-rows: 44px 44px 44px;
+  gap: 4px;
+  flex: none;
+}
+.exp-nudge button {
+  padding: 0;
+  font-size: 20px;
+}
+.exp-nudge button:nth-child(1) {
+  grid-column: 2;
+}
+.exp-nudge button:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.exp-nudge span {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  place-content: center;
+  font-size: 14px;
+}
+.exp-nudge button:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+.exp-nudge button:nth-child(5) {
+  grid-column: 2;
+  grid-row: 3;
+}
+.exp-stock-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.exp-stock-list div {
+  background: #efe4ca;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 14px;
+}
+.exp-stock-list span {
+  display: block;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+.exp-events {
+  padding-left: 20px;
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.exp-events time {
+  font-variant-numeric: tabular-nums;
+  color: #826643;
+}
+.exp-controls {
+  display: flex;
+  gap: 7px;
+  z-index: 50;
+  width: min(820px, 100%);
+  align-self: center;
+  flex: none;
+}
+.exp-controls button {
+  flex: 1;
+  padding: 9px 7px;
+  white-space: nowrap;
+}
+.exp-controls button:nth-child(3) {
+  flex: 0 0 48px;
+}
+.exp-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: #203f3475;
+  backdrop-filter: blur(7px);
+  padding: max(15px, env(safe-area-inset-top)) 15px
+    max(15px, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+}
+.exp-dialog {
+  position: relative;
+  width: min(570px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  border-radius: 24px;
+  padding: 25px;
+  background: #fff5df;
+  box-shadow: 0 20px 60px #153b3455;
+  line-height: 1.6;
+}
+.exp-dialog h2 {
+  font-size: 23px;
+  margin-right: 30px;
+}
+.exp-dialog p {
+  margin: 12px 0;
+}
+.exp-dialog ul {
+  padding-left: 22px;
+}
+.exp-dialog li {
+  margin: 10px 0;
+}
+.exp-dialog > button:not(.exp-close) {
+  width: 100%;
+  margin-top: 8px;
+}
+.exp-app .exp-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  padding: 0;
+  font-size: 24px;
+}
+.exp-scene-label {
+  background: #fff5dfea;
+  border: 1px solid #d9bb8b;
+  border-radius: 9px;
+  color: #173e32;
+  padding: 4px 7px;
+  font:
+    14px ui-rounded,
+    system-ui;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.exp-scene-label.selected {
+  border-color: #af6e1e;
+  background: #ffe4b3;
+}
+@media (max-width: 600px) {
+  .exp-app {
+    gap: 6px;
+  }
+  .exp-header h1 {
+    font-size: 20px;
+  }
+  .exp-header-buttons {
+    gap: 4px;
+  }
+  .exp-header-buttons button {
+    padding: 6px 8px;
+  }
+  .exp-header p {
+    font-size: 12px;
+  }
+  .exp-workers {
+    grid-template-columns: 1fr;
+  }
+  .exp-workers img {
+    width: 42px;
+    height: 49px;
+  }
+  .exp-panel {
+    max-height: 34dvh;
+    border-radius: 18px;
+  }
+  .exp-panel-content {
+    padding: 8px 10px;
+  }
+  .exp-workers p {
+    font-size: 14px;
+  }
+  .exp-hint {
+    font-size: 13px;
+  }
+  .exp-controls {
+    gap: 4px;
+  }
+  .exp-controls button {
+    font-size: 14px;
+    padding: 8px 4px;
+  }
+  .exp-controls button:nth-child(3) {
+    flex-basis: 42px;
+  }
+  .exp-layout-input {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+  .exp-grid {
+    width: 100%;
+  }
+  .exp-app .exp-grid button {
+    aspect-ratio: 1;
+    min-height: 28px;
+  }
+  .exp-nudge {
+    width: 100%;
+    grid-template-columns: 44px 44px 1fr 44px 44px;
+    grid-template-rows: 44px;
+    gap: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #fff3d7;
+    padding: 0;
+  }
+  .exp-nudge button:nth-child(1),
+  .exp-nudge button:nth-child(2),
+  .exp-nudge span,
+  .exp-nudge button:nth-child(4),
+  .exp-nudge button:nth-child(5) {
+    grid-column: auto;
+    grid-row: 1;
+  }
+  .exp-panel .exp-stock-list {
+    gap: 5px;
+  }
+  .exp-stock-list div {
+    padding: 6px;
+    font-size: 14px;
+  }
+  .exp-facilities button {
+    font-size: 14px;
+  }
+  .exp-tabs button {
+    font-size: 14px;
+  }
+}
+@media (max-height: 540px) {
+  .exp-header p {
+    display: none;
+  }
+  .exp-header h1 {
+    font-size: 18px;
+  }
+  .exp-header span {
+    font-size: 13px;
+  }
+  .exp-resources {
+    position: absolute;
+    left: 12px;
+    top: 65px;
+  }
+  .exp-scene {
+    min-height: 65px;
+  }
+  .exp-panel {
+    max-height: 34dvh;
+  }
+  .exp-workers {
+    grid-template-columns: 1fr 1fr;
+  }
+  .exp-workers img {
+    display: none;
+  }
+  .exp-controls button {
+    min-height: 40px;
+  }
+  .exp-app {
+    gap: 4px;
+    padding-top: max(6px, env(safe-area-inset-top));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .exp-app * {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}
