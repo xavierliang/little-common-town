@@ -315,6 +315,13 @@ export default function ExperimentApp({ onExit }: { onExit: () => void }) {
                           ? ` · 还需 ${fmt(w.task.remaining)} 秒`
                           : ""}
                       </small>
+                      {selected === w.id && (
+                        <p className="exp-time-accounting">
+                          累计用时：行走 {fmt(w.walkingSeconds)} 秒 · 取放与烘烤{" "}
+                          {fmt(w.workSeconds)} 秒 · 等待 {fmt(w.waitingSeconds)}{" "}
+                          秒 · 进食 {fmt(w.eatingSeconds)} 秒
+                        </p>
+                      )}
                     </div>
                   </button>
                 ))}

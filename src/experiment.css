@@ -1,4 +1,5 @@
 .exp-app {
+  box-sizing: border-box;
   --ink: #173e32;
   --paper: #fff3d7;
   position: fixed;

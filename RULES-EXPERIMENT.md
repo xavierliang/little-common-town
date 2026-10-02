@@ -1,6 +1,6 @@
 # 搬运与供给规则实验（待画面验收）
 
-从首页或手册进入「搬运与供给规则实验」，也可打开 `/?mode=experiment`。原面包坊故事、小镇七天挑战与沙盒保留，实验使用独立存档 `little-common-rules-experiment-v1`。本实验尚未发布到线上 Site。
+从首页或手册进入「搬运与供给规则实验」，也可打开 `/?mode=experiment`。原面包坊故事、小镇七天挑战与沙盒保留，实验使用独立存档 `little-common-rules-experiment-v1`。
 
 ## 先试一顿饭，再改变布局
 
